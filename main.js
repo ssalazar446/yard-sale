@@ -7,16 +7,21 @@ const mobileMenu = document.querySelector('.mobile-menu')
 const menuCarritoIcon = document.querySelector('.navbar-shopping-cart')
 const shoopingCartContainer = document.querySelector('#shoopingCartContainer')
 const cardsContainer = document.querySelector('.cards-container')
+const productDetailContainer = document.querySelector('#productDetail')
+const productDetailClose = document.querySelector('.product-detail-close')
 const produtsList = [];
 
 
 //Eventos
 menuEmail.addEventListener('click', () => {
     shoopingCartContainer.classList.add('inactive')
+    productDetailContainer.classList.add('inactive')
     desktopMenu.classList.toggle('inactive') //Con esto se logra acortar e incluir la función directamente
 })
 menuBurguer.addEventListener('click', toggleMobileMenu)
 menuCarritoIcon.addEventListener('click', toogleCarritoshoopingCartContainer)
+productDetailClose.addEventListener('click', closeProductDetailAside)
+
 
 
 //Funciones
@@ -26,6 +31,7 @@ menuCarritoIcon.addEventListener('click', toogleCarritoshoopingCartContainer)
 function toggleMobileMenu (){
     shoopingCartContainer.classList.add('inactive')//Con esto se logra agregarle la clase inactive para que no se mezcle la vista con el shoopingCartContainer
     mobileMenu.classList.toggle('inactive') 
+    productDetailContainer.classList.add('inactive')
 
     //Otra manera de logra que si el carrito esta abierto se cierre el menu mobile
 /*     const isshoopingCartContainerClosed = shoopingCartContainer.classList.contains('inactive')
@@ -38,6 +44,7 @@ function toggleMobileMenu (){
 function toogleCarritoshoopingCartContainer (){
     mobileMenu.classList.add('inactive')//Con esto se logra agregarle la clase inactive para que no se mezcle la vista con el menu mobile
     desktopMenu.classList.add('inactive')
+    productDetailContainer.classList.add('inactive')
     shoopingCartContainer.classList.toggle('inactive') 
 
     //Otra manera de logra que si el menu mobile esta abierto se cierre el carrito
@@ -48,6 +55,18 @@ function toogleCarritoshoopingCartContainer (){
     shoopingCartContainer.classList.add('inactive')
  */
 
+}
+
+function openProductDetailAside() {
+    productDetailContainer.classList.remove('inactive')
+    shoopingCartContainer.classList.add('inactive')
+    desktopMenu.classList.add('inactive')
+
+}
+
+function closeProductDetailAside() {
+    productDetailContainer.classList.add('inactive')
+    desktopMenu.classList.add('inactive')
 }
 
 //Arrays con objetos
@@ -107,6 +126,7 @@ for (product of arr) {
 
     const productImg = document.createElement('img')
     productImg.setAttribute('src', product.image) //imagen dinamica
+    productImg.addEventListener('click', openProductDetailAside)
 
     const productInfo = document.createElement('div')
     productInfo.classList.add('product-info')
