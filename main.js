@@ -5,18 +5,18 @@ const desktopMenu = document.querySelector('.desktop-menu')
 const menuBurguer = document.querySelector('.menu')
 const mobileMenu = document.querySelector('.mobile-menu')
 const menuCarritoIcon = document.querySelector('.navbar-shopping-cart')
-const aside = document.querySelector('.product-detail')
+const shoopingCartContainer = document.querySelector('#shoopingCartContainer')
 const cardsContainer = document.querySelector('.cards-container')
 const produtsList = [];
 
 
 //Eventos
 menuEmail.addEventListener('click', () => {
-    aside.classList.add('inactive')
+    shoopingCartContainer.classList.add('inactive')
     desktopMenu.classList.toggle('inactive') //Con esto se logra acortar e incluir la función directamente
 })
 menuBurguer.addEventListener('click', toggleMobileMenu)
-menuCarritoIcon.addEventListener('click', toogleCarritoAside)
+menuCarritoIcon.addEventListener('click', toogleCarritoshoopingCartContainer)
 
 
 //Funciones
@@ -24,28 +24,28 @@ menuCarritoIcon.addEventListener('click', toogleCarritoAside)
     desktopMenu.classList.toggle('inactive') //Quita o pone la clase inactive dependiendo si tiene o no
 } */
 function toggleMobileMenu (){
-    aside.classList.add('inactive')//Con esto se logra agregarle la clase inactive para que no se mezcle la vista con el aside
+    shoopingCartContainer.classList.add('inactive')//Con esto se logra agregarle la clase inactive para que no se mezcle la vista con el shoopingCartContainer
     mobileMenu.classList.toggle('inactive') 
 
     //Otra manera de logra que si el carrito esta abierto se cierre el menu mobile
-/*     const isAsideClosed = aside.classList.contains('inactive')
-    if (!isAsideClosed) {
-        aside.classList.add('inactive')
+/*     const isshoopingCartContainerClosed = shoopingCartContainer.classList.contains('inactive')
+    if (!isshoopingCartContainerClosed) {
+        shoopingCartContainer.classList.add('inactive')
     }
     mobileMenu.classList.add('inactive') */
 }
 
-function toogleCarritoAside (){
+function toogleCarritoshoopingCartContainer (){
     mobileMenu.classList.add('inactive')//Con esto se logra agregarle la clase inactive para que no se mezcle la vista con el menu mobile
     desktopMenu.classList.add('inactive')
-    aside.classList.toggle('inactive') 
+    shoopingCartContainer.classList.toggle('inactive') 
 
     //Otra manera de logra que si el menu mobile esta abierto se cierre el carrito
 /*     const isMobileMenoClosed = mobileMenu.classList.contains('inactive')
     if (!isMobileMenoClosed) {
         mobileMenu.classList.add('inactive')
     }
-    aside.classList.add('inactive')
+    shoopingCartContainer.classList.add('inactive')
  */
 
 }
